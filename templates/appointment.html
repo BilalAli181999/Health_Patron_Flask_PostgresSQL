@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Make an Appointment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/open-iconic-bootstrap.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/animate.css') }}" >
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/owl.carousel.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/owl.theme.default.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/magnific-popup.css') }}">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/aos.css') }}" >
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/ionicons.min.css') }}">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/jquery.timepicker.css') }}" >
+
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/flaticon.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/icomoon.css') }}">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+    <style>
+
+        body{
+           background: linear-gradient(45deg, #167ce9 0%, #79efb4 100%);
+            margin:0px;
+            padding:0px;
+            width:100%;
+            clear: both;
+        }
+
+        #form{
+            background-color: rgba(0,0,0,0.40);
+            color: white;
+            display: flex;
+            justify-content: center;
+
+
+        }
+
+        #std-1,#std-2{
+            width: inherit;
+            margin-top: 25vh;
+
+        }
+@keyframes floating {
+    0%{
+
+        transform: scale(1.2,1.2);
+    }
+    50%{
+
+        transform: scale(0.8);
+    }
+    100%{
+
+        transform: scale(1.0,1.0);
+    }
+
+}@keyframes move {
+        0%{
+            transform: translateX(-100px);
+
+        }
+            50%{
+                transform: translateX(50px);
+            }
+
+ }
+        #std-1,#std-2{
+
+            animation: move 5s;
+        }
+        #prof-1{
+
+            animation: shiver 2s;
+        }
+
+
+        @keyframes shiver {
+              0%{
+                  transform: rotate(30deg);
+
+        }
+            50%{
+                transform: rotate(-30deg);
+            }
+        }
+
+        label{
+            animation: shiver 1s;
+        }
+#pic{
+
+    height: auto;
+
+
+
+}
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="{{url_for('index')}}"><i class="flaticon-pharmacy"></i><span>Health</span>Patron</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+		  <li class="nav-item  "><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+		  <li class="nav-item  "><a href="{{ url_for('about') }}" class="nav-link">About Us</a></li>
+
+          <li class="nav-item  "><a href="{{ url_for('appointment') }}" class="nav-link">Make an Appointment</a></li>
+            <li class="nav-item  "><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+          <li class="nav-item cta"><a href="{{ url_for('login') }}" class="nav-link"><span>Sign In</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div class="container " id="form-con">
+
+   <div class="row">
+       <div class="col-md-3 col-10"><img id='std-1'  src="static/images/standing-11.png" > </div>
+
+
+       <div class="col-md-4 offset-1 offset-md-1 col-10 mt-5 mb-5" id="form">
+<form class="mb-5 mt-5" method="post" action="{{ url_for("addAppointments") }}">
+    <div style="display: flex;justify-content: center"><img id='prof-1' src="static/images/person.png" style="height: 200px"></div>
+    <div class="form-group">
+        <label>Full Name</label>
+        <input class="form-control" required type="text" name="name">
+    </div>
+    <div class="form-group">
+        <label>Phone-No</label>
+        <input class="form-control" required type="text" name="phone">
+    </div>
+     <div class="form-group">
+        <label>Gender</label>
+       <input list="gender" name="gender" class="form-control">
+       <datalist id="gender">
+       <option value="Male">
+       <option value="Female">
+           <option value="Unspecified">
+
+        </datalist>
+    </div>
+    <div class="form-group">
+        <label>Age</label>
+        <input class="form-control" required type="text" name="birthDate">
+    </div>
+     <div class="form-group">
+        <label>Address</label>
+        <input class="form-control" required type="text" name="address">
+    </div>
+
+    <div class="form-group">
+        <label id="email">Email</label>
+        <input class="form-control" required type="email" aria-describedby="inputGroup-sizing-sm" name="email">
+    </div>
+ <div class="form-group">
+        <label>Appointment Type</label>
+       <input list="type" class="form-control" name="type">
+       <datalist id="type">
+       <option value="Routine Checkup">
+       <option value="Sick Visit">
+           <option value="Vaccinations">
+       <option value="Eye Care">
+           <option value="Mental Counselling">
+
+        </datalist>
+    </div>
+        <label>Choose Patient :</label><br>
+       <div class="offset-2"> <input  required type="radio" value="existing" name="ptype">Existing<br>
+        <input  required type="radio" value="new" name="ptype" >New</div>
+<br>
+<button class=" mt-2 btn btn-primary" type="submit">Submit</button>
+    <button class=" mt-2 btn btn-primary ml-5" type="reset">Clear</button>
+
+</form>
+</div>
+       <div class="col-md-3 offset-md-1 col-10"><img id='std-2' src="static/images/standing-17.png"> </div>
+   </div>
+</div>
+
+    <script>
+    $('input').hover(function () {
+        $(this).focus()
+
+    })
+</script>
+
+</body>
+</html>

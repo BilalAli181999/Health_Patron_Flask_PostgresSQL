@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Patient</title>
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/open-iconic-bootstrap.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/animate.css') }}" >
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/owl.carousel.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/owl.theme.default.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/magnific-popup.css') }}">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/aos.css') }}" >
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/ionicons.min.css') }}">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/jquery.timepicker.css') }}" >
+
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/flaticon.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/icomoon.css') }}">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+
+    <link rel="stylesheet" href= "{{ url_for('static',filename='asset/bootstrap/css/bootstrap.min.css') }}" >
+    <link rel="stylesheet" href= "{{ url_for('static',filename='asset/fonts/font-awesome.min.css') }}" >
+    <link rel="stylesheet" href= "{{ url_for('static',filename='asset/css/styles.css') }}" >
+    <link rel="stylesheet" href= "{{ url_for('static',filename='asset/css/Table-with-search.css') }}" >
+    <link rel="stylesheet" href= "{{ url_for('static',filename='asset/css/Table-with-search1.css') }}">
+      <style>
+        body{
+            background: linear-gradient(45deg, #167ce9 0%, #79efb4 100%);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        #table{
+            margin-top: 100px;
+            border-collapse: collapse;
+
+        }
+        td{
+            border: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="{{url_for('index')}}"><i class="flaticon-pharmacy"></i><span>Health</span>Patron</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+		 <li class="nav-item  "><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+
+             <li class="nav-item  "><a href="{{ url_for('editAccount') }}" class="nav-link">Edit Account</a></li>
+            <li class="nav-item  "><a href="{{ url_for('appointments') }}" class="nav-link">Appointments</a></li>
+            <li class="nav-item  "><a href="{{ url_for('editPatient') }}" class="nav-link">Patients Record</a></li>
+          <li class="nav-item cta"><a href="{{ url_for('signout') }}" class="nav-link"><span>Sign Out</span></a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<div class="form-group pull-right">
+    <input type="text" class="search form-control" placeholder="Search">
+</div>
+<span class="counter pull-right"></span>
+<table class="table table-hover  results">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th class="">Name</th>
+      <th class="">Gender</th>
+      <th class="">Phone</th>
+        <th class="">Age</th>
+      <th class="">Address</th>
+      <th class="">Email</th>
+        <th class="">Appointment Type</th>
+         <th class="">Edit</th>
+        <th class="">Delete</th>
+    </tr>
+    <tr class="warning no-result">
+      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Balázs Barta</td>
+      <td>UI & UX</td>
+      <td>Eger</td>
+        <td>20</td>
+      <td>3/7 Khalid Street Old Muslim Town</td>
+      <td>m.bilalali181999@gmail.com</td>
+        <td>Vaccination</td>
+
+        <td><button class="btn btn-warning"><a href="{{url_for('updateInfo',id=1) }}"> Edit</a></button> </td>
+        <td><button class="btn btn-danger">Delete</button> </td>
+
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Dániel Nagy</td>
+      <td>Graphic Designer</td>
+      <td>Eger</td>
+        <td>3/7 Khalid Street Old Muslim Town</td>
+      <td>m.bilalali181999@gmail.com</td>
+        <td>Vaccination</td>
+
+        <td><button class="btn btn-warning"><a href="{{url_for('updateInfo',id=2) }}"> Edit</a></button> </td>
+        <td><button class="btn btn-danger">Delete</button> </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Szilárd Sebők</td>
+      <td>Software Developer</td>
+      <td>Budapest</td>
+        <td>3/7 Khalid Street Old Muslim Town</td>
+      <td>m.bilalali181999@gmail.com</td>
+        <td>Vaccination</td>
+
+         <td><button class="btn btn-warning"><a href="{{url_for('updateInfo',id=3) }}"> Edit</a></button> </td>
+        <td><button class="btn btn-danger">Delete</button> </td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Sándor Fekete</td>
+      <td>Front-end Developer</td>
+      <td>Luxemburg</td>
+        <td>3/7 Khalid Street Old Muslim Town</td>
+      <td>m.bilalali181999@gmail.com</td>
+        <td>Vaccination</td>
+
+        <td><button class="btn btn-warning"><a href="{{url_for('updateInfo',id=4) }}"> Edit</a></button> </td>
+        <td><button class="btn btn-danger">Delete</button> </td>
+    </tr>
+  </tbody>
+</table>
+
+    <script src="static/asset/js/jquery.min.js"></script>
+    <script src="static/asset/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/asset/js/Table-with-search.js"></script>
+</body>
+
+</html>

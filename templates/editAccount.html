@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Account</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/open-iconic-bootstrap.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/animate.css') }}" >
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/owl.carousel.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/owl.theme.default.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/magnific-popup.css') }}">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/aos.css') }}" >
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/ionicons.min.css') }}">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/jquery.timepicker.css') }}" >
+
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/flaticon.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/icomoon.css') }}">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+     <style>
+
+        body{
+            background: linear-gradient(45deg, #167ce9 0%, #79efb4 100%);
+
+        }
+        #form{
+            background-color: rgba(0,0,0,0.40);
+            color: white;
+            display: flex;
+            justify-content: center;
+
+
+        }
+
+        @keyframes floating {
+            0%{
+
+                transform: scale(1.2,1.2);
+            }
+            50%{
+
+                transform: scale(0.8);
+            }
+            100%{
+
+                transform: scale(1.0,1.0);
+            }
+
+        }@keyframes move {
+             0%{
+                 transform: translateX(-100px);
+
+             }
+             50%{
+                 transform: translateX(50px);
+             }
+
+         }
+        #std-1,#std-2{
+
+            animation: move 5s;
+        }
+        #prof-1{
+
+            animation: shiver 2s;
+        }
+
+
+        @keyframes shiver {
+            0%{
+                transform: rotate(30deg);
+
+            }
+            50%{
+                transform: rotate(-30deg);
+            }
+        }
+
+        label{
+            animation: shiver 1s;
+        }
+#std-1,#std-2{
+    width: inherit;
+    margin-top: 25vh;
+
+}
+
+    </style>
+
+  </head>
+  <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="{{url_for('index')}}"><i class="flaticon-pharmacy"></i><span>Health</span>Patron</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+		   <li class="nav-item  "><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+
+             <li class="nav-item  "><a href="{{ url_for('editAccount') }}" class="nav-link">Edit Account</a></li>
+            <li class="nav-item  "><a href="{{ url_for('appointments') }}" class="nav-link">Appointments</a></li>
+            <li class="nav-item  "><a href="{{ url_for('editPatient') }}" class="nav-link">Patients Record</a></li>
+          <li class="nav-item cta"><a href="{{ url_for('signout') }}" class="nav-link"><span>Sign Out</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <h1 class="text-white mt-2" style="text-align: center">Confirm Its You</h1>
+<div class=" container align-content-md-center" >
+
+    <div class="row">
+        <div class="col-md-3 col-10"><img id='std-1'  src="static/images/standing-11.png" > </div>
+
+        <div class="col-md-4 offset-1 offset-md-1 col-10 mt- mb-5" id="form">
+            <form class="mb-5 mt-2 form" id="form-con" method="post" action="{{ url_for('editAccount') }}">
+                <div style="display: flex;justify-content: center"><img  class="img-fluid" id='prof-1' src="static/images/person.png" style="height: 200px"></div>
+                <div class="form-group">
+                    <label>Enter Current UserName</label>
+                    <input class="form-control" required type="text" name="username">
+                </div>
+                <div class="form-group">
+                    <label>Enter Current Password</label>
+                    <input class="form-control" required type="password" name="password" id="password">
+                    <div style="text-align: center">
+                    <input type="checkbox"  id="view" onclick="myFunction()">View Password
+                        </div>
+                </div>
+
+                <button class=" mt-2 btn btn-primary" type="submit">Confirm</button>
+                <button class=" mt-2 btn btn-primary ml-5" type="reset">Clear</button>
+
+            </form>
+        </div>
+        <div class="col-md-3 offset-md-1 col-10"><img  id='std-2' src="static/images/standing-17.png"> </div>
+    </div>
+</div>
+  <script>
+    function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+</body>
+</html>

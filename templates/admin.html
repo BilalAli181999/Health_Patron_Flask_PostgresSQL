@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin's Menu</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/open-iconic-bootstrap.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/animate.css') }}" >
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/owl.carousel.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/owl.theme.default.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/magnific-popup.css') }}">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/aos.css') }}" >
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/ionicons.min.css') }}">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/jquery.timepicker.css') }}" >
+
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/flaticon.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/icomoon.css') }}">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+
+    <style>
+        @keyframes zoom {
+            0%{
+                opacity: 10%;
+            }
+            50%{
+                opacity: 70%;
+                transform: scale(1.1,1.1);
+            }
+            100%{
+                opacity: 100%;
+            }
+        }
+
+        .card:hover{
+            animation: zoom 5s;
+        }
+
+    </style>
+    <script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title: {
+		text: "Gender Diversification"
+	},
+	axisY: {
+		title: "No Of Patients",
+		suffix: "",
+		includeZero: false
+	},
+	axisX: {
+		title: "Month"
+	},
+	data: [{
+		type: "column",
+		yValueFormatString: "#,##0.0#\"%\"",
+		dataPoints: [
+			{ label: "Male", y: 40 },
+			{ label: "Female", y: 60 },
+			{ label: "Male", y: 51 },
+			{ label: "Female", y: 25 },
+			{ label: "Male", y: 23 },
+			{ label: "Female", y: 18 },
+			{ label: "Male", y: 16 },
+			{ label: "Female", y: 46 }
+
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+
+</head>
+<body style=" background: linear-gradient(45deg, #167ce9 0%, #79efb4 100%);height: 100vh">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="{{url_for('index')}}"><i class="flaticon-pharmacy"></i><span>Health</span>Patron</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+		  <li class="nav-item  "><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+
+             <li class="nav-item  "><a href="{{ url_for('editAccount') }}" class="nav-link">Edit Account</a></li>
+            <li class="nav-item  "><a href="{{ url_for('appointments') }}" class="nav-link">Pending Appointments</a></li>
+             <li class="nav-item  "><a href="{{ url_for('scheduled') }}" class="nav-link">Scheduled Appointments</a></li>
+            <li class="nav-item  "><a href="{{ url_for('editPatient') }}" class="nav-link">Patients Record</a></li>
+          <li class="nav-item cta"><a href="{{ url_for('signout') }}" class="nav-link"><span>Sign Out</span></a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="row mt-4 ml-2 mr-2">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Patients (Monthly)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">230</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Patients (Annual)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">2578</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Successful Cases</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">87%</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+
+            <div class="cards col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Cases</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">31</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+
+
+</body>
+</html>

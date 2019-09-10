@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scheduled Appointments</title>
+</head>
+   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/open-iconic-bootstrap.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/animate.css') }}" >
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/owl.carousel.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/owl.theme.default.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/magnific-popup.css') }}">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/aos.css') }}" >
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/ionicons.min.css') }}">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/jquery.timepicker.css') }}" >
+
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/flaticon.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/icomoon.css') }}">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+
+  <style>
+      body{
+          height:100%;
+      }
+      table{
+          width: 100%;
+      }
+      hr{
+  height: 1px;
+  color: crimson;
+  background-color:crimson;
+  border: none;
+}
+      label{
+          font-size: 20px;
+          color: black;
+      }
+      .card{
+          border-left: crimson 25px solid ;
+          border-right: crimson 3px solid;
+          border-bottom: crimson 3px solid;
+          border-top: crimson 3px solid;
+          box-shadow: 10px 10px 10px darkgray;
+
+
+      }
+
+      .card-body{
+          background-color:transparent;
+      }
+  </style>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-light ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="{{url_for('index')}}"><i class="flaticon-pharmacy"></i><span>Health</span>Patron</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+		  <li class="nav-item  "><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+
+             <li class="nav-item  "><a href="{{ url_for('editAccount') }}" class="nav-link">Edit Account</a></li>
+            <li class="nav-item  "><a href="{{ url_for('appointments') }}" class="nav-link">Appointments</a></li>
+            <li class="nav-item  "><a href="{{ url_for('editPatient') }}" class="nav-link">Patients Record</a></li>
+          <li class="nav-item cta"><a href="{{ url_for('signout') }}" class="nav-link"><span>Sign Out</span></a></li>
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="container-fluid appointments">
+
+    <div class="col-md-12 row">
+        {%  for s in sched %}
+        <div class="card mt-4 col-md-5 offset-md-1  col-12 ">
+            <div class="card-body ">
+                <table class="" >
+                    <tr>
+                        <th>Name :</th><td>{{ s.name }}</td></tr><tr><th>Gender :</th><td>{{  s.gender }}</td>
+                       <th>Age :</th><td>{{ s.age }}</td></tr><tr>
+                    </table>
+                <hr>
+                <label>Allocated Date: </label>{{ s.date }}
+                <br>
+                <label>Allocated Time:</label>{{ s.time }}
+
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
+
+</body>
+</html>

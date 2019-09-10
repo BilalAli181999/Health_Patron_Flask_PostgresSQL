@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ status }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    .card{
+        padding: 0px;
+        border:none;
+        box-shadow: 10px 10px 5px grey;
+    }
+</style>
+</head>
+<body style="height: 100vh;background: linear-gradient(45deg, #167ce9 0%, #79efb4 100%);">
+<div class="container">
+    <div class="card col-md-4 offset-md-4 col-10 offset-1 mt-4">
+        <div class="card-header bg-danger text-white">
+            <h3>{{ status }}</h3>
+        </div>
+        <div class="card-body bg-warning text-white">
+            <h3>{{ message }}</h3>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointments</title>
+</head>
+   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/open-iconic-bootstrap.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/animate.css') }}" >
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/owl.carousel.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/owl.theme.default.min.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/magnific-popup.css') }}">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/aos.css') }}" >
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/ionicons.min.css') }}">
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/jquery.timepicker.css') }}" >
+
+
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/flaticon.css') }}" >
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/icomoon.css') }}">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+
+  <style>
+      body{
+          height:100%;
+      }
+      table{
+          width: 100%;
+      }
+      hr{
+  height: 1px;
+  color: deepskyblue;
+  background-color:deepskyblue;
+  border: none;
+}
+      .card{
+          border-left: deepskyblue 25px solid ;
+          border-right: deepskyblue 3px solid;
+          border-bottom: deepskyblue 3px solid;
+          border-top: deepskyblue 3px solid;
+          box-shadow: 10px 10px 10px darkgray;
+
+      }
+      input{
+          border:deepskyblue 2px solid;
+      }
+      .card-body{
+          background-color:transparent;
+      }
+
+  </style>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-light ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="{{url_for('index')}}"><i class="flaticon-pharmacy"></i><span>Health</span>Patron</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+		  <li class="nav-item  "><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+
+             <li class="nav-item  "><a href="{{ url_for('editAccount') }}" class="nav-link">Edit Account</a></li>
+            <li class="nav-item  "><a href="{{ url_for('scheduled') }}" class="nav-link">Scheduled Appointments</a></li>
+            <li class="nav-item  "><a href="{{ url_for('editPatient') }}" class="nav-link">Patients Record</a></li>
+          <li class="nav-item cta"><a href="{{ url_for('signout') }}" class="nav-link"><span>Sign Out</span></a></li>
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="container-fluid appointments">
+
+    <div class="col-md-12 row">
+        {%  for app in appointments %}
+        <div class="card mt-4 col-md-5 offset-md-1  col-12 ">
+            <div class="card-body ">
+                <table class="" >
+                    <tr>
+                        <th>Name :</th><td>{{ app[1] }}</td></tr><tr><th>Gender :</th><td>{{app[3]}}</td>
+                       <th>Age :</th><td>{{  app[4]}}</td></tr><tr><th>Email :</th><td>{{  app[6] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Appointment Type :</th><td>{{ app[7] }}</td>
+                    </tr>
+                    </table>
+                <hr>
+                    <form class="form col-md-10 offset-md-1" method="post" action="{{ url_for("sendEmail",id=app[0]) }}">
+                        <label>Select Date</label>
+                        <input type="date" name="date" required>
+                        <br>
+                        <label>Select Time</label>
+                        <input type="time" name="time" required>
+                        <button class="btn btn-warning ml-5" class="submit" type="submit">Schedule</button>
+
+                    </form>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.submit').click(function () {
+            alert("Email Sent")
+
+        })
+
+
+    })
+</script>
+</body>
+</html>
